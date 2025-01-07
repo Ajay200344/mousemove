@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-JS</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(135deg, #f06, #4a90e2);
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .follower {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        pointer-events: none;
+        transition: transform 0.05s ease-out, background-color 0.3s ease;
+      }
+
+      .follower:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+      /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .follower{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: #003cff;
+            box-shadow: 5px 5px 20px rgb(73, 73, 73);
+            transition: transform .2s linear;
+        } */
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <img
+        src="data:image/png;base64,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"
+        class="follower"
+        id="follower"
+      />
+    </div>
+
+    <script>
+      const follower = document.getElementById("follower");
+
+      document.addEventListener("mousemove", (event) => {
+        let { clientX, clientY } = event;
+        console.log(event);
+        follower.style.transform = `translate(${clientX}px,${clientY}px)`;
+      });
+    </script>
+  </body>
+</html>
